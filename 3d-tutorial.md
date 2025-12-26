@@ -10,6 +10,7 @@ toc-depth: 4
 bibliography: references.bib
 lang: en
 format: html
+lightbox: true
 link-citations: true
 colorlinks: true
 citecolor: Maroon
@@ -142,6 +143,52 @@ The BigDataViewer interface will open showing an optical section of the head sam
 
 ![](media/14-bdv-interface.png)
 
+Getting familiar with the BigDataViewer is an essential skill for navigating large 3D datasets. It’ll also be important for the multiview registration pipeline. So, take the time to learn the basic commands and shortcuts. It is nicely intuitive. The [BigDataViewer’s page](https://imagej.net/plugins/bdv/) on the [ImageJ Docs](https://imagej.net) has the official documentation and you can also go to `Help` > `Show Help` for an up-to-date overview.
+
+Some of the movements to try:
+
+- `left+click+drag`: turn the sample around the mouse pointer at any arbitrary angle.
+- `right+click+drag`: move the sample in the XY plane (of the view).
+- `scroll`: move through the Z plane (of the view). Use shift+scroll to move fast.
+- `ctrl+shift+scroll`: zoom in or out.
+
+::: {layout-ncol=4}
+
+![left-click](media/15-left-drag.png)
+
+![right-click](media/16-right-drag.png)
+
+![scroll](media/17-shift-scroll.png)
+
+![zoom](media/18-ctrl-shift.png)
+
+:::
+
+But, most importantly, are the commands to put your sample back to its original orientation or along any of the original dimension axes:
+
+- `shift+z`: orient the sample on the XY plane.
+- `shift+x`: orient the sample on the ZY plane.
+- `shift+y`: orient the sample on the ZX plane.
+
+::: {layout-ncol=3}
+
+![XY](media/19-bdv-xy.png)
+
+![ZY](media/20-bdv-zy.png)
+
+![ZX](media/21-bdv-zx.png)
+
+:::
+
+Finally, a visual tip. The default interpolation between image slices is `nearest-neighbors`. Press `i` to activate the `tri-linear` interpolation to obtain a much smoother (and improved) data visualization.
+
+::: {layout-ncol=2}
+
+![nearest-neighbors](media/22-bdv-nearest.png)
+
+![tri-linear](media/23-bdv-trilinear.png)
+
+:::
 
 ## 3D Project {#sec-threed-project}
 
