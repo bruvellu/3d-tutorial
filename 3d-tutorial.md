@@ -18,7 +18,8 @@ urlcolor: MidnightBlue
 
 ## Summary {#sec-summary}
 
-This tutorial shows how to visualize 3D microscopy data in Fiji [@Schindelin2012-di] using built-in tools and the plugin 3Dscript [@Schmid2019-bm].
+This tutorial shows how to visualize 3D microscopy data in Fiji [@Schindelin2012-di].
+It provides a quick introduction to some of the tools that are bundled in Fiji, such as Orthogonal Views, Volume Viewer, and 3D Viewer [@Schmid2010-ep], and a more in-depth explanation of the plugins BigDataViewer [@Pietzsch2015-md] and 3Dscript [@Schmid2019-bm].
 
 ## Requirements {#sec-requirements}
 
@@ -27,16 +28,15 @@ This tutorial shows how to visualize 3D microscopy data in Fiji [@Schindelin2012
 
 ## Setup {#sec-setup}
 
-### Download datasets
-
-- `T1 Head (16-bits)` dataset is included in Fiji (no need to download in advance)
-- `btd-gap-stg_3_z3_t53s_E3_4x.tif` dataset downloadable from Zenodo
-
-### Download Fiji and 3Dscript
+### Install Fiji
 
 - Go to <https://fiji.sc>, choose `Distribution: Stable`, and click the download button
 - Copy the downloaded archive to your working directory and unzip it
 - Open the `Fiji.app` directory and double-click on the launcher
+- The main window of Fiji will open
+
+### Install 3Dscript
+
 - Click on `Help` > `Update...` and wait
 - Click on `Manage Update Sites`
 - A list of plugins will open
@@ -47,11 +47,28 @@ This tutorial shows how to visualize 3D microscopy data in Fiji [@Schindelin2012
 - Check if `3Dscript` is installed under `Plugins` > `3Dscript`
 - You are ready!
 
-### Open dataset
+### Download 3D datasets
 
-- We will work with an MRI dataset included in Fiji
-- To open it go to File > Open Samples > T1 Head (16-bits)
-- Increase the zoom to 200%
+- `T1 Head (16-bits)` dataset is included in Fiji (no need to download in advance)
+- `btd-gap-stg_3_z3_t53s_E3_4x.tif` dataset downloadable from Zenodo
+
+## Open dataset {#sec-open-dataset}
+
+We will begin by visualizing an MRI dataset of a human head that is bundled in Fiji.
+
+- Go to `File` > `Open Samples` > `T1 Head (16-bits)`
+
+::: {layout-ncol=2}
+
+![](media/01-sample-open.png)
+
+![](media/02-open-head.png)
+
+:::
+
+- Increase the zoom to 200% for better visualization
+
+![](media/03-head-zoomed.png)
 
 ## Orthogonal Views {#sec-orthogonal-views}
 
@@ -66,6 +83,10 @@ This tutorial shows how to visualize 3D microscopy data in Fiji [@Schindelin2012
 - Click in different parts of the head to inspect the position under different angles
 - This is a great way to start understanding your data in 3D
 
+## 3D Project {#sec-threed-project}
+
+- TODO
+
 ## Volume Viewer {#sec-volume-viewer}
 
 - Volume viewer is a powerful built-in plugin for volume visualization [@ref]
@@ -77,14 +98,23 @@ This tutorial shows how to visualize 3D microscopy data in Fiji [@Schindelin2012
 
 ## 3D Viewer {#sec-threed-viewer}
 
-- The 3D Viewer is another plugin built-in in Fiji
+- The 3D Viewer [@Schmid2010-ep] is another plugin built-in in Fiji
+- https://imagej.net/plugins/3d-viewer/
 - It is a simple plugin for 3D rendering 
 - You can also interact with the rendered volume
 - But the options for configuration are more limited
 - But you can, for example, generate animations
 - Go to Plugins > 3D Viewer
 
-## 3D Project {#sec-threed-project}
+## BigDataViewer {#sec-bigdata-viewer}
+
+- TODO
+
+## BigVolumeViewer {#sec-bigvolume-viewer}
+
+- TODO
+
+## BigVolumeBrowser {#sec-bigvolume-browser}
 
 - TODO
 
