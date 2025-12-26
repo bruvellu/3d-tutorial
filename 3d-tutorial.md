@@ -143,7 +143,7 @@ The BigDataViewer interface will open showing an optical section of the head sam
 
 ![](media/14-bdv-interface.png)
 
-Getting familiar with the BigDataViewer is an essential skill for navigating large 3D datasets. It’ll also be important for the multiview registration pipeline. So, take the time to learn the basic commands and shortcuts. It is nicely intuitive. The [BigDataViewer’s page](https://imagej.net/plugins/bdv/) on the [ImageJ Docs](https://imagej.net) has the official documentation and you can also go to `Help` > `Show Help` for an up-to-date overview.
+Getting familiar with the BigDataViewer is an essential skill for navigating large 3D datasets. It’ll also be important for the multiview registration pipeline. So, take the time to learn the basic commands and shortcuts. It is nicely intuitive. The [BigDataViewer’s page](https://imagej.net/plugins/bdv/) on the [ImageJ Docs](https://imagej.net) has the official documentation and we can also go to `Help` > `Show Help` for an up-to-date overview.
 
 Some of the movements to try:
 
@@ -192,52 +192,75 @@ Finally, a visual tip. The default interpolation between image slices is `neares
 
 ## 3D Project {#sec-threed-project}
 
-This is a simple tool to quickly generate a 3D animation (e.g., 360-degree rotation) from an image stack. It works OK for fluorescent microscopy images, but not so well with our MRI dataset. There are basic parameters for adjusting the rendering, like projection method and opacity, and for controlling the animation. To try:
+This is a simple tool to quickly generate a 3D animation (e.g., 360-degree rotation) from an image stack. There are basic parameters for adjusting the rendering, like projection method and opacity, and for controlling the animation. There’s only a bit of [documentation](https://imagej.net/imaging/z-functions#3d-project). To try:
 
-- Go to `Image` > `Stacks` > `3D Project...`
+- Go to `Image` > `Stacks` > `3D Project...` and click `OK` to generate a basic animation
+
+![](media/24-3d-project.png)
+
+As noticeable above, 3D Project doesn’t do so well with our MRI dataset. However, it works OK for fluorescent microscopy images, so I encourage you to try with other datasets in the future.
 
 ## 3D Viewer {#sec-threed-viewer}
 
-- The 3D Viewer [@Schmid2010-ep] is another plugin built-in in Fiji
-- https://imagej.net/plugins/3d-viewer/
-- It is a simple plugin for 3D rendering 
-- You can also interact with the rendered volume
-- But the options for configuration are more limited
-- But you can, for example, generate animations
-- Go to Plugins > 3D Viewer
+The 3D Viewer [@Schmid2010-ep] is a 3D visualization plugin bundled in Fiji. It has been the default 3D rendering engine for many years and provides a good starting point for visualizing and interacting with 3D images. The interface provides some rendering and animation options, but it is possible to create more advanced visualizations and animations with code. For more details, please consult the [documentation](https://imagej.net/plugins/3d-viewer/).
 
-## BigVolumeViewer {#sec-bigvolume-viewer}
+Here, we’ll only open our dataset with 3D Viewer for visualization.
 
-- TODO
+- Go to `Plugins` > `3D Viewer`
+
+![](media/25-3dviewer-open.png)
+
+An import dialog will open. In addition, to the image field itself, pay attention to the `Resampling factor` parameter. The default is 2, which means 2x downsampling of the original stack. Always downsample at least 2x because 3D Viewer will crash when trying to open large datasets.
+
+- Click `OK` on the options dialog and when asked about converting to 8-bit
+
+::: {layout-ncol=2}
+
+![](media/26-3dviewer-options.png)
+
+![](media/27-3dviewer-convert.png)
+
+:::
+
+The main interface will open.
+
+- Explore the sample interactively.
+
+::: {layout-ncol=2}
+
+![](media/28-3dviewer-interface.png)
+
+![](media/29-3dviewer-interactive.png)
+
+:::
 
 ## BigVolumeBrowser {#sec-bigvolume-browser}
 
-- TODO
+BigVolumeBrowser is a Fiji plugin to render and interact with 3D data. It’s a fork of the unreleased BigVolumeViewer (a BigDataViewer cousin). The project is being actively developed and seems to have a [good documentation](https://github.com/UU-cellbiology/bigvolumebrowser/wiki) already. It’s a good candidate for some testing and for keeping an eye in the future. However, we’ll not cover it in this tutorial as it’s simply too recent. 
 
 ## 3Dscript {#sec-threedscript}
 
-- 3Dscript is a GPU-accelerated plugin to generate renderings and animations of 3D data [@ref]
-- It supports stacks with multiple channels and timelapses, has several options to control the rendering appearance, allows for transformations and cropping, and can generate animations using natural language
-- The latter is specially useful to have precise control over the animation
-- To start select the stack you want to open and go to Plugins > 3Dscript > Interactive 
-- Two new windows will open
-- 3D Animation with the initial rendering of the data and Interactive Raycaster with all the control parameters
+3Dscript is a GPU-accelerated Fiji plugin to generate animations of 3D/4D data [@Schmid2019-bm]. It supports stacks with multiple channels and timepoints, has several options to control the rendering appearance, allows custom transformations and cropping of the data, and generates animations using natural language. The latter is specially useful to have precise control over the animation. Once properly installed, 3Dscript is incredibly fast to generate the animations and doesn’t require a lot of RAM as the datasets can be opened as virtual stacks (more about this below).
 
-### Configuration
+To get start, make sure the head dataset is still open.
 
-- The Contrast section shows a histogram of pixel intensities of the image as a reference
-- For each channel (you can pick the channel to edit in the dropdown menu) you can set the minimum, gamma, and maximum values for the intensity and alpha (transparency)
-- The weight controls the opacity of the channel (0=invisible, 100=visible)
-- Rendering algorithm has three options: independent transparency (default), combined transparency, and maximum intensity projection. This affects mostly multichannel images. The default is usually good for most use cases
+- Go to `Plugins` > `3Dscript` > `Interactive Animation`
 
-#### Adjust channels
+![](media/30-3dscript-open.png)
 
-- Adjusting the intensity and alpha values of the channels is the most impactful way to improve the rendering of your 3D animation
-- By default, 3Dscript loads these values from the original stack
-- But often, they need to be tweaked for rendering in 3D
-- Intensity is the standard levels also used in the contrast tools. The minimum defines which pixel value in the image corresponds to black and the maximum defines which value corresponds to white
-- The head dataset loads with min=3 and max=521
-- Change the min to 250. You will see that the darkest parts of the rendering will become even darker and no longer visible. We are losing real information from the data; we do not want that. Set the min to 0, for now
+Two new windows will open: `3D Animation` with the initial rendering of the data and `Interactive Raycaster` with all the fields to control the rendering parameters.
+
+![](media/31-3dscript-windows.png)
+
+### Contrast
+
+The Contrast section shows a histogram of pixel intensities of the image for each channel, which we can choose using the dropdown menu. We can set the minimum, gamma, and maximum values for the intensity and alpha (transparency) properties of each pixel. The weight option controls the general opacity of the channel (0=invisible, 100=visible). There’s also more advanced options like lighting and rendering algorithm which we’ll simply use the default states as it is usually good for most of the use cases.
+
+Adjusting the intensity and alpha values is the most impactful way to improve the 3D rendering. With the intensity setting we can define which pixel value in the image corresponds to total black (minimum) and which corresponds to total white. It’s the same as in the standard `Brightness & Contrast` tool. By default, 3Dscript will load these values from the original stack. In this case, it loaded min=3 and max=521. Let’s change these values to see how it impacts the 3D rendering.
+
+- Change the intensity minimum to 250
+
+You will see that the darkest parts of the rendering will become even darker and no longer visible. We are losing real information from the data; we do not want that. Set the min to 0, for now
 - Change the max to 250. The brightest parts of the rendering will become all white. It is so bright that we can no longer resolve details of the surface. We are losing information and also do not want that. Set the max to 500
 - Note that when you change a intensity value, the min/max black line in the histogram moves. You can also grab the line and move the line manually to change the values
 - The blue line represents the alpha values. In 3D rendering a pixel has a transparency value linked to its intensity. The alpha min defines the value for full transparency and the max the value for full opacity
