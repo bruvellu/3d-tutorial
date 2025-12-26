@@ -256,49 +256,198 @@ Two new windows will open: `3D Animation` with the initial rendering of the data
 
 The Contrast section shows a histogram of pixel intensities of the image for each channel, which we can choose using the dropdown menu. We can set the minimum, gamma, and maximum values for the intensity and alpha (transparency) properties of each pixel. The weight option controls the general opacity of the channel (0=invisible, 100=visible). There’s also more advanced options like lighting and rendering algorithm which we’ll simply use the default states as it is usually good for most of the use cases.
 
-Adjusting the intensity and alpha values is the most impactful way to improve the 3D rendering. With the intensity setting we can define which pixel value in the image corresponds to total black (minimum) and which corresponds to total white. It’s the same as in the standard `Brightness & Contrast` tool. By default, 3Dscript will load these values from the original stack. In this case, it loaded min=3 and max=521. Let’s change these values to see how it impacts the 3D rendering.
+Adjusting the intensity and alpha values is the most impactful way to improve the 3D rendering. With the intensity setting we can define which pixel value in the image corresponds to total black (minimum) and which corresponds to total white. It’s the same as in the standard `Brightness & Contrast` tool. By default, 3Dscript will load these values from the original stack. In this case, it loaded min=3 and max=521.
+
+::: {layout-ncol=2}
+
+![](media/32-3dscript-default.png)
+
+![](media/33-3dscript-default.png)
+
+:::
+
+Let’s change these values to see how it impacts the 3D rendering.
 
 - Change the intensity minimum to 250
 
-You will see that the darkest parts of the rendering will become even darker and no longer visible. We are losing real information from the data; we do not want that. Set the min to 0, for now
-- Change the max to 250. The brightest parts of the rendering will become all white. It is so bright that we can no longer resolve details of the surface. We are losing information and also do not want that. Set the max to 500
-- Note that when you change a intensity value, the min/max black line in the histogram moves. You can also grab the line and move the line manually to change the values
-- The blue line represents the alpha values. In 3D rendering a pixel has a transparency value linked to its intensity. The alpha min defines the value for full transparency and the max the value for full opacity
-- Let’s set the alpha min to 250. This will make darker pixels more transparent and information gets lost. Set it to 0
-- By default 3Dscript sets the gamma value of alpha to 2.0. Let’s return it back to 1.0 to have a linear adjustments. Note that this improves the visualization of the head’s surface
-- Now set the alpha max to 250. The surface will become even more solid because we are defining that pixels that have a value above 250 will be fully opaque. To compare, set alpha max to 5000. You will notice that the sample will become more transparent and even the brain inside the skull will be visible. Set it 500
-- Generally, setting the intensity and alpha to the same values is a good sane start for optimizing the rendering
+::: {layout-ncol=2}
 
-#### Orient sample
+![](media/34-3dscript-intmin.png)
 
-- Click on the Transformation show menu to reveal the rotation, translation, and scaling controls
-- The 3D Animation window is interactive
-- Click on the head and move it around. It’s a great way to see your sample from all the different angles
-- Note that the values in the Transformation panel get updated every time you move interactively
-- You can also change the precise values you want to position the sample
-- Press Reset and change the Rotation Y to 180 to see the right side of the head
-- Now change Scale to 5 and Translation X to -500 to focus the rendering on the nose
-- Press Reset to return to the original position
+![](media/35-3dscript-intmin.png)
 
-#### Crop bounding box
+:::
 
-- Another useful option is the ability to crop the bounding box to show the inside of the sample
-- You can do it in the XYZ directions or in the near/far axis defined from the user point of view
-- Set the Z range minimum value to 60 (you can also drag the slider). This will slice through the sample in the Z axis. Now rotate to see the cropped sample from other angles
+You will see that the darkest parts of the rendering will become even darker and no longer visible. We are losing real information from the data; we do not want that.
+
+- Set the min to 0, for now.
+- Then, change the max to 250.
+
+::: {layout-ncol=2}
+
+![](media/36-3dscript-intmax.png)
+
+![](media/37-3dscript-intmax.png)
+
+:::
+
+The brightest parts of the rendering will become all white. It is so bright that we can no longer resolve details of the surface. We are losing information and also do not want that.
+
+- Set the max to 500.
+
+Note that when you change a intensity value, the min/max black line in the histogram moves. You can also grab the line and move the line manually to change the values.
+
+The blue line represents the alpha values. In 3D rendering, a pixel has a transparency value linked to its intensity. The alpha min defines the value for full transparency and the max the value for full opacity.
+
+- Set the alpha min to 250.
+
+::: {layout-ncol=2}
+
+![](media/38-3dscript-alpmin.png)
+
+![](media/39-3dscript-alpmin.png)
+
+:::
+
+This will make darker pixels more transparent and information gets lost.
+
+- Set it to 0.
+
+::: {layout-ncol=2}
+
+![](media/40-3dscript-gamma2.png)
+
+![](media/41-3dscript-gamma2.png)
+
+:::
+
+By default 3Dscript sets the gamma value of alpha to 2.0. That’s a good default for fluorescence microscopy (see the next dataset below), but since this is MRI data, we need to tweak it a little different.
+
+- Set the alpha gamma value to 1.0.
+
+::: {layout-ncol=2}
+
+![](media/42-3dscript-gamma1.png)
+
+![](media/43-3dscript-gamma1.png)
+
+:::
+
+Note that this improves the visualization as the head’s surface becomes better visible.
+
+- Now set the alpha max to 250.
+
+::: {layout-ncol=2}
+
+![](media/44-3dscript-alpmax.png)
+
+![](media/45-3dscript-alpmax.png)
+
+:::
+
+The surface will become even more solid because we are defining that pixels that have a value above 250 will be fully opaque.
+
+- To compare, set alpha max to 5000.
+
+::: {layout-ncol=2}
+
+![](media/46-3dscript-alpmaxhi.png)
+
+![](media/47-3dscript-alpmaxhi.png)
+
+:::
+
+You will notice that the sample will become more transparent. Even the brain inside the skull will be visible.
+
+- Set alpha max back to 500
+
+::: {layout-ncol=2}
+
+![](media/48-3dscript-contrast.png)
+
+![](media/49-3dscript-contrast.png)
+
+:::
+
+Generally, setting the intensity and alpha to the same values is a good sane start for optimizing the rendering.
+
+### Transformation
+
+The transformation menu has controls for rotating, translating, and scaling the sample. We can either add values or manually interact with the `3D Animation` window to reorient the sample. Let’s try the latter.
+
+- Left-click on the head and move it around.
+
+![](media/50-transform-click.png)
+
+That’s a great way to see your sample from different angles. And note that the values in the Transformation panel get updated every time you move the sample interactively. In this way you can roughly position the sample and then check and update the precise values for the target transformation.
+
+- Press `Reset` and change the `Rotation Y` to 180 to look at the right side of the head
+
+::: {layout-ncol=2}
+
+![](media/51-transform-right.png)
+
+![](media/52-transform-right.png)
+
+:::
+
+- Now change `Scale` to 5 and `Translation X` to -500 to focus on the nose
+
+::: {layout-ncol=2}
+
+![](media/53-transform-nose.png)
+
+![](media/54-transform-nose.png)
+
+:::
+
+- Press Reset to return the sample to its original position
+
+### Cropping
+
+Another useful 3Dscript option is the ability to crop the bounding box to show the inside of the sample. We can do it in the XYZ directions or in the near/far axis, defined from the user point of view.
+
+- Set the Z range minimum value to 60 (you can also drag the slider) to slice the sample through the Z axis.
+
+![](media/55-cropz-min.png)
+
+- Now rotate the sample to see the cropped region from other angles
+
+::: {layout-ncol=2}
+
+![](media/56-cropz-cropped.png)
+
+![](media/57-cropz-rotation.png)
+
+:::
+
 - Set the Y range min to 125 and rotate around
-- Reset the position and cropping parameters
-- Finally set the Near/far min to 0 and move the sample around to see the dynamic reslice of the sample with this cropping parameter
+
+![](media/58-transform-wild.png)
+
+- Finally, reset the position and cropping parameters and set the Near/Far minimum to 0
+
+and move the sample around to see the dynamic reslice of the sample with this cropping parameter
+
+![](media/59-transform-near.png)
+
 - Reset transformations and cropping parameters
 
-#### Bookmark view
+### Bookmark
 
-- 3Dscript allows you to bookmark a view for later inspection
-- Simply click on the green icon to add the current Contrast, Transformation, and Cropping parameters to the bookmark
+3Dscript allows you to bookmark a view for later inspection. Add the current Contrast, Transformation, and Cropping parameters to the bookmark.
+
+- For that, simply click on the green icon
+
+![](media/60-transform-bookmark.png)
 
 #### Set output options
 
-- This panel defines the dimensions of the output animation. It is the original stack dimensions by default
-- You can also define if the bounding box and scale bar will be visible (enabled by default)
+This panel last panel defines the dimensions of the output animation. By default it uses the original stack dimensions.
+
+![](media/61-transform-outbox.png)
+
+You can also define if the bounding box or the scale bar will be visible (enabled by default)
 
 ### Animation
 
