@@ -72,20 +72,25 @@ We will begin by visualizing an MRI dataset of a human head that is bundled in F
 
 ## Orthogonal Views {#sec-orthogonal-views}
 
-- Orthogonal views is a tool that shows the optical sections through XZ and YZ dimensions.
-- It is a great and quick way get a sense of the tridimensionality of your dataset
-- Click on Image > Stacks > Orthogonal Views (or press ctrl+shift+H)
+Orthogonal Views is a tool that shows the optical sections through the orthogonal planes of XY: XZ and YZ. It is an easy and quick way to get a sense of the tridimensionality of your dataset. Whenever I’m opening a dataset for the first time I use Orthogonal Views. To activate it:
+
+- Click on `Image` > `Stacks` > `Orthogonal Views` (or press ctrl+shift+H)
 - The XZ and YZ panels will open next to your XY stack
 
-![](media/19-stack-orthogonal.png)
+![](media/04-ortho-views.png)
 
 - The yellow lines are synchronized between the panels
-- Click in different parts of the head to inspect the position under different angles
-- This is a great way to start understanding your data in 3D
+- Click around the different parts of the head to inspect the same position under different angles
 
-## 3D Project {#sec-threed-project}
+::: {layout-ncol=2}
 
-- TODO
+![](media/05-ortho-first.png)
+
+![](media/06-ortho-second.png)
+
+:::
+
+Orthogonal Views is a great way to start understanding your 3D data.
 
 ## Volume Viewer {#sec-volume-viewer}
 
@@ -96,6 +101,16 @@ We will begin by visualizing an MRI dataset of a human head that is bundled in F
 - You can activate the volume viewer to render the sample surface in 3D
 - There are also rendering options for the surface
 
+## BigDataViewer {#sec-bigdata-viewer}
+
+- TODO
+
+## 3D Project {#sec-threed-project}
+
+This is a simple tool to quickly generate a 3D animation (e.g., 360-degree rotation) from an image stack. It works OK for fluorescent microscopy images, but not so well with our MRI dataset. There are basic parameters for adjusting the rendering, like projection method and opacity, and for controlling the animation. To try:
+
+- Go to `Image` > `Stacks` > `3D Project...`
+
 ## 3D Viewer {#sec-threed-viewer}
 
 - The 3D Viewer [@Schmid2010-ep] is another plugin built-in in Fiji
@@ -105,10 +120,6 @@ We will begin by visualizing an MRI dataset of a human head that is bundled in F
 - But the options for configuration are more limited
 - But you can, for example, generate animations
 - Go to Plugins > 3D Viewer
-
-## BigDataViewer {#sec-bigdata-viewer}
-
-- TODO
 
 ## BigVolumeViewer {#sec-bigvolume-viewer}
 
