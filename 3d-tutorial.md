@@ -441,7 +441,7 @@ and move the sample around to see the dynamic reslice of the sample with this cr
 
 ![](media/60-transform-bookmark.png)
 
-#### Set output options
+### Output
 
 This panel last panel defines the dimensions of the output animation. By default it uses the original stack dimensions.
 
