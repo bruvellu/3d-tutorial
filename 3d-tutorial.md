@@ -18,8 +18,7 @@ urlcolor: MidnightBlue
 
 ## Summary {#sec-summary}
 
-This tutorial shows how to visualize 3D microscopy data in Fiji [@Schindelin2012-di].
-It provides a quick introduction to some of the tools that are bundled in Fiji, such as Orthogonal Views, Volume Viewer, and 3D Viewer [@Schmid2010-ep], and a more in-depth explanation of the plugins BigDataViewer [@Pietzsch2015-md] and 3Dscript [@Schmid2019-bm].
+This tutorial shows different approaches to visualize 3D microscopy data in Fiji [@Schindelin2012-di]. It provides a quick introduction to some of the tools bundled in Fiji, such as Orthogonal Views, Volume Viewer, 3D Viewer [@Schmid2010-ep], and BigDataViewer [@Pietzsch2015-md], and a more in-depth explanation of the plugin 3Dscript [@Schmid2019-bm].
 
 ## Requirements {#sec-requirements}
 
@@ -94,12 +93,24 @@ Orthogonal Views is a great way to start understanding your 3D data.
 
 ## Volume Viewer {#sec-volume-viewer}
 
-- Volume viewer is a powerful built-in plugin for volume visualization [@ref]
-- To activate it go to Plugins > Volume Viewer
-- It has different modes of visualization: Slice, Slice & Borders, Max Projection, Projection, and Volume
-- The interface is interactive and intuitive to use
-- You can activate the volume viewer to render the sample surface in 3D
-- There are also rendering options for the surface
+Volume Viewer is a more powerful plugin for 3D visualization as it supports slicing, projections, and rendering. The interface is interactive and intuitive to use. To open it:
+
+- Go to `Plugins` > `Volume Viewer`. The main interface will open in the `Slice` mode.
+
+![](media/07-volume-viewer.png)
+
+- Click around and move the sample to see optical sections from different angles.
+- Then, activate the `Volume` mode to render the sample’s surface in 3D and explore it as well, playing with the different rendering parameters
+
+::: {layout-ncol=2}
+
+![](media/08-volume-render.png)
+
+![](media/09-volume-options.png)
+
+:::
+
+Volume Viewer also provides a way to take snapshots of the current view.
 
 ## BigDataViewer {#sec-bigdata-viewer}
 
