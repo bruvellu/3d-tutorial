@@ -114,7 +114,34 @@ Volume Viewer also provides a way to take snapshots of the current view.
 
 ## BigDataViewer {#sec-bigdata-viewer}
 
-- TODO
+BigDataViewer [@Pietzsch2015-md] is one of the most important tools for visualizing large, multidimensional datasets. It provides a simple and intuitive interface and shortcuts to swiftly navigate through your sample even in a regular laptop. This is possible because of the underlying file format used by the BigDataViewer: the XML/HDF5 combo. Therefore, before opening the plugin, we must convert our dataset.
+
+- Go to `Plugins` > `BigDataViewer` > `Export Current Image as XML/HDF5`
+
+![](media/10-bdv-export.png)
+
+A dialog with export options will open.
+
+- Under `Export path`, click on `Browse` to select the output directory for `t1-head.xml`
+
+![](media/11-bdv-path.png)
+
+The export process will start. Since this is a small dataset, it’ll be fast. But, for large datasets, this can take hours.
+
+When done, you will find two new files in your working directory: `t1-head.xml` and `t1-head.h5`
+
+![](media/12-bdv-files.png)
+
+The XML file stores metadata information about the image. The HDF5 file stores actual image data. These two files will always be in a pair. To open the XML/HDF5:
+
+- Go to `Plugins` > `BigDataViewer` > `Open XML/HDF5` and select the `t1-head.xml`
+
+![](media/13-bdv-open.png)
+
+The BigDataViewer interface will open showing an optical section of the head sample.
+
+![](media/14-bdv-interface.png)
+
 
 ## 3D Project {#sec-threed-project}
 
