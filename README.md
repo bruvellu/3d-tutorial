@@ -4,6 +4,8 @@ This tutorial shows different approaches to visualize 3D microscopy data in [Fij
 
 ## Citation
 
-Vellutini, Bruno C. 2025. 3d-Tutorial: Visualization of 3D Data in Fiji Using Built-in Tools and the Plugin 3Dscript. Github. <https://github.com/bruvellu/3d-tutorial>.
+Vellutini, Bruno C. 2025. 3D-Tutorial: Visualization of 3D Data in Fiji Using Built-in Tools and the Plugin 3Dscript. GitHub. <https://github.com/bruvellu/3d-tutorial> (Zenodo archive and DOI will be available soon).
 
-Zenodo citation will be available soon.
+## License
+
+This tutorial is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).

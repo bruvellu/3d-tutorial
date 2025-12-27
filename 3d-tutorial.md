@@ -1,15 +1,15 @@
 ---
 title: Visualization of 3D data in Fiji
 author: Bruno C. Vellutini
-date: today
+date: 05 January 2026
 date-format: long
 created: 23 December 2025
 modified: today
+lang: en
+format: html
 toc: true
 toc-depth: 4
 bibliography: references.bib
-lang: en
-format: html
 lightbox: true
 code-block-bg: true
 link-citations: true
@@ -898,9 +898,11 @@ However, this video can be large. So for presentation purposes and other usages,
 
 ## Citation {#sec-citation}
 
-Vellutini, Bruno C. 2025. 3d-Tutorial: Visualization of 3D Data in Fiji Using Built-in Tools and the Plugin 3Dscript. Github. <https://github.com/bruvellu/3d-tutorial>.
+Vellutini, Bruno C. 2025. 3D-Tutorial: Visualization of 3D Data in Fiji Using Built-in Tools and the Plugin 3Dscript. GitHub. <https://github.com/bruvellu/3d-tutorial> (Zenodo archive and DOI will be available soon).
 
-Zenodo citation will be available soon.
+## License
+
+This tutorial is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
 
 ## References {#sec-references}
 
