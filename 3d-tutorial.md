@@ -238,7 +238,7 @@ The main interface will open.
 
 ## BigVolumeBrowser {#sec-bigvolume-browser}
 
-BigVolumeBrowser is a Fiji plugin to render and interact with 3D data. It’s a fork of the unreleased BigVolumeViewer (a BigDataViewer cousin). The project is being actively developed and seems to have a [good documentation](https://github.com/UU-cellbiology/bigvolumebrowser/wiki) already. It’s a good candidate for some testing and for keeping an eye in the future. However, we’ll not cover it in this tutorial as it’s simply too recent. 
+BigVolumeBrowser is a Fiji plugin to render and interact with 3D data. It’s a fork of the unreleased BigVolumeViewer (a BigDataViewer cousin). The project is being actively developed and seems to have a [good documentation](https://github.com/UU-cellbiology/bigvolumebrowser/wiki) already. It’s a good candidate for some testing and for keeping an eye in the future. However, we’ll not cover it in this tutorial as it’s simply too recent.
 
 ## 3Dscript {#sec-threedscript}
 
@@ -455,7 +455,7 @@ You can also define if the bounding box or the scale bar will be visible (enable
 
 Now that we learned the basics of setting up the rendering and view parameters, we can start generating animations of the data.
 
-- Click on the `Animation` section and on the `Start text-based animation editor` button 
+- Click on the `Animation` section and on the `Start text-based animation editor` button
 
 ![](media/62-animation-button.png)
 
@@ -583,7 +583,7 @@ Another useful 3Dscript feature is the ability to issue multiple commands to hap
 
 ```default
 From frame 0 to frame 71:
-- rotate by 270 degrees horizontally 
+- rotate by 270 degrees horizontally
 - change channel 1 bounding box max z to 60
 ```
 
@@ -612,11 +612,11 @@ To prevent this issue, we can set the initial conditions of the animation. This 
 
 ```default
 At frame 0:
-- rotate by 90 degrees around (0, 1, 0) 
+- rotate by 90 degrees around (0, 1, 0)
 - change channel 1 bounding box z to (0, 129)
 
 From frame 0 to frame 71:
-- rotate by 150 degrees horizontally 
+- rotate by 150 degrees horizontally
 - change channel 1 bounding box max z to 60
 - zoom by a factor of 2
 ```
@@ -641,7 +641,7 @@ We can now also tweak the animation to reach the final appearance that we want. 
 
 ```default
 At frame 0:
-- rotate by 90 degrees around (0, 1, 0) 
+- rotate by 90 degrees around (0, 1, 0)
 - change channel 1 bounding box z to (0, 129)
 - change bounding box visibility to off
 - change scalebar length to 50
@@ -649,13 +649,13 @@ At frame 0:
 - change scalebar offset to 20
 
 From frame 0 to frame 71:
-- rotate by 180 degrees horizontally 
+- rotate by 180 degrees horizontally
 - change channel 1 bounding box max z to 60
 - zoom by a factor of 2
 
 From frame 72 to frame 100:
 - change channel 1 bounding box max z to 129
-- zoom by a factor of 0.5 
+- zoom by a factor of 0.5
 ```
 
 ::: {layout-ncol=4}
@@ -710,7 +710,7 @@ Even though the original dataset would not even fit in the memory of today’s h
 The initial 3D rendering is always showing the position and timepoint of the original stack (if you change the timepoint of the original stack and re-open 3Dscript the current timepoint would be rendered).
 
 - Rotate the sample interactively to see the other side, where the surface of the embryo is.
-- Then, reset the transformation and change the `Rotation Y` to `180` 
+- Then, reset the transformation and change the `Rotation Y` to `180`
 
 ![](media/96-3dscript-rotate.png)
 
@@ -896,7 +896,13 @@ This will create an uncompressed `.avi` file. You can usually play this file on 
 
 However, this video can be large. So for presentation purposes and other usages, it is good practice to compress the video into a `.mp4` container using a high-quality compression parameter to reduce the file size without affecting the image quality. A good software for this is [HandBrake](https://handbrake.fr).
 
-## References
+## Citation {#sec-citation}
+
+Vellutini, Bruno C. 2025. 3d-Tutorial: Visualization of 3D Data in Fiji Using Built-in Tools and the Plugin 3Dscript. Github. <https://github.com/bruvellu/3d-tutorial>.
+
+Zenodo citation will be available soon.
+
+## References {#sec-references}
 
 ::: {#refs}
 :::
