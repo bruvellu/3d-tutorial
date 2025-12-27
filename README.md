@@ -1,3 +1,3 @@
 # 🧊 Visualization of 3D data in Fiji
 
-This tutorial shows different approaches to visualize 3D microscopy data in Fiji [@Schindelin2012-di]. It provides a quick introduction to some of the tools bundled in Fiji, such as Orthogonal Views, Volume Viewer, 3D Viewer [@Schmid2010-ep], and BigDataViewer [@Pietzsch2015-md], and a more in-depth explanation of the plugin 3Dscript [@Schmid2019-bm].
+This tutorial shows different approaches to visualize 3D microscopy data in [Fiji](https://fiji.sc). It provides a quick introduction to some of the bundled tools, such as Orthogonal Views, Volume Viewer, [3D Viewer](https://imagej.net/plugins/3d-viewer/), and [BigDataViewer](https://imagej.net/plugins/bdv/), and a more in-depth explanation of the plugin [3Dscript](https://bene51.github.io/3Dscript/).
