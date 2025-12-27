@@ -19,7 +19,7 @@ render:
 # Publish tutorial to GitHub pages
 publish:
     git checkout main
-    quarto publish gh-pages {{file}}.md
+    quarto publish gh-pages {{file}}.md --no-prompt
 
 # Push to repository
 push:
