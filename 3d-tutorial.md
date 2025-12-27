@@ -1,7 +1,7 @@
 ---
 title: Visualization of 3D data in Fiji
 author: Bruno C. Vellutini
-date: 05 January 2026
+date: 29 December 2025
 date-format: long
 created: 23 December 2025
 modified: today
