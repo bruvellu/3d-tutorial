@@ -15,3 +15,12 @@ preview:
 # Render project to HTML
 render:
     quarto render {{file}}.md --to html
+
+# Publish tutorial to GitHub pages
+publish:
+    git checkout main
+    quarto publish gh-pages {{file}}.md
+
+# Push to repository
+push:
+    git push
