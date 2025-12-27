@@ -852,7 +852,7 @@ From frame 0 to frame 9 change timepoint to 200
 
 ![](media/104-3dscript-tweaked.png)
 
-#### Increase frame number
+#### Make it smoother
 
 We can now finish off the animation by increasing the number of frames to make it smoother. The maximum number of frames is 200, as we have 200 timepoints. If you add more frames, you’ll get duplicated frames and the animation might lag.
 
@@ -872,6 +872,8 @@ We are done with this animation, let’s save it. Always save the original anima
 
 - Press ctrl+s or `File` > `Save` or `File` > `Save As` > `Tiff...`
 
+![](media/106-3dscript-tiff.png)
+
 I normally add the `3D` prefix to the filename.
 
 Then, also save the animation as a `.avi` video file.
@@ -879,7 +881,19 @@ Then, also save the animation as a `.avi` video file.
 - Go to `File` > `Save As` > `AVI...`
 - Change the `Compression` to `None` (otherwise your image quality will be degraded) and choose the frame rate for the video (15fps works fine in this case).
 
-This will create an uncompressed `.avi` file. You can usually play this file on your video player. However, this video can be large. So for presentation purposes and other usages, it is good practice to compress the video into a `.mp4` container using a high-quality compression parameter to reduce the file size without affecting the image quality. A good software for this is [HandBrake](https://handbrake.fr).
+::: {layout-ncol=2}
+
+![](media/107-3dscript-avi.png)
+
+![](media/108-3dscript-compress.png)
+
+:::
+
+This will create an uncompressed `.avi` file. You can usually play this file on your video player.
+
+![](media/109-3dscript-play.png)
+
+However, this video can be large. So for presentation purposes and other usages, it is good practice to compress the video into a `.mp4` container using a high-quality compression parameter to reduce the file size without affecting the image quality. A good software for this is [HandBrake](https://handbrake.fr).
 
 ## References
 
