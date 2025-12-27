@@ -11,6 +11,7 @@ bibliography: references.bib
 lang: en
 format: html
 lightbox: true
+code-block-bg: true
 link-citations: true
 colorlinks: true
 citecolor: Maroon
@@ -449,67 +450,166 @@ This panel last panel defines the dimensions of the output animation. By default
 
 You can also define if the bounding box or the scale bar will be visible (enabled by default)
 
-### Animation
+### Animation 3D
 
-- Now that we learned the basics of setting up the rendering and view parameters, we can start generating animations of the data
-- Click on the Animation show section and the button Start text-based animation editor
-- This will open a special editor window for writing the animation script
-- The editor has an strong autocomplete, which means you only need to type one letter at a time to be able to write the exact text needed
-- Let’s start with the simplest animation, rotating the head 360 degrees
-- To do this we need to define the number of frames that the animation will have and what will happen during these frames
-- We can start with defining an animation with ten frames
-- Frame counting begins from 0. That means that 0 to 9 has 10 frames.
-- Type `f` and the editor will autocomplete `From frame <frame>`
-- Type `0` and space and the autocomplete `From frame 0 to frame <frame>`
-- Type `9` and space and the autocomplete will show a dropdown menu with several options (rotate by, translate, zoom by a factor of, reset transformation, and change)
-- Choose `rotate by` and press tab to autocomplete `From frame 0 to frame 9 rotate by <degrees>`
-- Type 360 and space `From frame 0 to frame 9 rotate by 360 degrees` and a dropdown will show the options horizontally, vertically, and around
-- Choose horizontally and on the next menu choose (none)
-- We have our first animation script, it’s just this single sentence
-- Press Run
-- A new window will show up with an image stack of 10 frames containing the generated animation
-- Press play or \ and watch the head turn 360 degrees in these 10 frames
-- Note that you didn’t need to define how many degrees the head needs to turn in each frame. You just state that you needed the head to turn 360 in these 10 frames and 3Dscript deals with it
-- Now, the animation is a bit jumpy, not smooth. To make it smoother we can simply add more frames to it
-- Change 9 to 35 so that the animation will have 36 frames in total, each frame will rotate by 1 degree. It is smoother. The rotation is very linear
-- We can also accelerate/decelerate animation transition using the easing options
-- Type ease at the end of the sentence and Run
-- Note how the head slowly accelerates the rotation and then slowly decelerates towards the end
-- All the other options manually set in the Raycaster window will be applied
+Now that we learned the basics of setting up the rendering and view parameters, we can start generating animations of the data.
 
-- Let’s add a couple more commands
-- After the 360 degree rotation we want to show the inside of the head
-- TO do that we can using the cropping parameters to change the position of the bounding box
-- Write below the first line
+- Click on the `Animation` section and on the `Start text-based animation editor` button 
 
+![](media/62-animation-button.png)
+
+This will open a special editor window for writing the animation script.
+
+![](media/63-animation-editor.png)
+
+#### Rotate horizontally
+
+Let’s start with the simplest animation: a rotation of the head around 360 degrees. We need to define the number of frames that the animation will have and what will happen during these frames. We can start by defining that the animation will have ten frames.
+
+Note: frame counting in 3Dscript begins from 0 (frame 0 to 9 has 10 frames).
+
+The editor has a strong autocomplete; you only need to type one letter at a time to be able to write the exact text needed for the animation.
+
+- Type `f`. The editor will autocomplete with `From frame <frame>`.
+- Type `0` and space. The autocomplete will fill with `From frame 0 to frame <frame>`.
+- Type `9` and space. The autocomplete will show a dropdown menu with several options (`rotate by`, `translate`, `zoom by a factor of`, `reset transformation`, and `change`).
+- Choose `rotate by` and press `TAB`. The autocomplete will show `From frame 0 to frame 9 rotate by <degrees>`
+- Type `360` and space. The sentence will be `From frame 0 to frame 9 rotate by 360 degrees ` and a dropdown will show the options `horizontally`, `vertically`, and `around`.
+- Choose `horizontally` and on the next menu choose `(none)`
+
+::: {layout-ncol=2}
+
+![](media/64-animation-frame.png)
+
+![](media/65-animation-rotation.png)
+
+:::
+
+We have our first animation script and it’s just this single sentence:
+
+```default
+From frame 0 to frame 9 rotate by 360 degrees horizontally
 ```
+
+- Press `Run`
+
+A new window will show up with an image stack of 10 frames containing the generated animation
+
+![](media/66-animation-first.png)
+
+- Press play or \ and watch the head turn 360 degrees during these 10 frames.
+
+Note that we did not need to define how many degrees the head would turn for each frame. We can simply state that we need the head to turn 360 in these 10 frames and 3Dscript will deal with it.
+
+#### Make it smoother
+
+Our first animation is cool, but a bit jumpy. To make it smoother we can add more frames.
+
+- Change the final frame from 9 to 35, so that the animation will have 36 frames in total
+
+![](media/67-animation-smoother.png)
+
+Now each frame rotates by 1 degree and the animation is much smoother.
+
+#### Add easing
+
+The standard animation creates a linear rotation; every frame turns a fixed number of degrees. 3Dscript can add easing to create non-linear transitions by accelerating or decelerating the rotation.
+
+- Type `ease` at the end of the script sentence
+
+```default
+From frame 0 to frame 35 rotate by 360 degrees horizontally
+```
+
+- Then, press `Run`
+
+
+::: {layout-ncol=2}
+
+![0°](media/68-animation-easing1.png)
+
+![90°](media/69-animation-easing2.png)
+
+![180°](media/70-animation-easing3.png)
+
+![270°](media/71-animation-easing4.png)
+
+:::
+
+The left head is the one without easing (linear transition) and the right head is the animation with easing. Note how the right head accelerates the rotation at the beginning, turning much faster, and then decelerates towards the end of the rotation. Both end the rotation at the same time. Play both animations side-by-side to see the difference (it’s very clear, once you see it).
+
+#### Animate cropping
+
+Let’s add a couple more commands below our rotation sentence. We want that, after the 360 degree rotation, the animation slices through the head to show the tissues inside. For that, we can change the cropping parameters to control the position of the bounding box during the animation.
+
+- After the first sentence, write the two commands as shown below
+
+```default
 From frame 0 to frame 35 rotate by 360 degrees horizontally
 From frame 36 to frame 71 change channel 1 bounding box min z to 60
 From frame 72 to frame 99 change channel 1 bounding box min z to 0
 ```
 
-- This is saying to set the z min to 60 (roughly half way through the sample) for about 30 frames and then going back to zero in the next 30 frames
+- Press `Run`
 
-- We can also issue multiple commands to happen simultaneously. We can define a rotation and cropping
+::: {layout-ncol=4}
 
-```
+![](media/72-animation-box1.png)
+
+![](media/73-animation-box2.png)
+
+![](media/74-animation-box3.png)
+
+![](media/75-animation-box4.png)
+
+![](media/76-animation-box5.png)
+
+![](media/77-animation-box6.png)
+
+![](media/78-animation-box7.png)
+
+![](media/79-animation-box8.png)
+
+:::
+
+The script is saying to rotate 360 degrees horizontally, as before, set the Z range minimum to 60 (roughly half way through the sample) for about 30 frames, and then set the Z range minimum back to 0 in the subsequent 30 frames. And that’s what we get.
+
+#### Define multiple commands
+
+Another useful 3Dscript feature is the ability to issue multiple commands to happen simultaneously, within the defined frames. For example, we can make a script that defines a horizontal rotation and Z cropping at the same time.
+
+- Write the code below in the editor and press `Run`
+
+```default
 From frame 0 to frame 71:
 - rotate by 270 degrees horizontally 
 - change channel 1 bounding box max z to 60
 ```
 
-- Now cropping is happening together with the rotation
+::: {layout-ncol=4}
+
+![](media/80-animation-multi1.png)
+
+![](media/81-animation-multi2.png)
+
+![](media/82-animation-multi3.png)
+
+![](media/83-animation-multi4.png)
+
+:::
+
+Now cropping is happening simultaneously with the rotation.
 
 #### Set initial conditions
 
-- Note that if you simply re-run the above command, the head will start already cropped
-- That’s because 3Dscript takes the current parameters as initial conditions for the animation
-- Since the previous animation changed the bounding box without changing it back, the value remains set
-- To prevent this issue, we can set the initial conditions of the animation (highly recommended)
-- This is also needed when you want to start in a position different from the default position of the stack
-- You can do so using the `At frame 0:` construction
 
-```
+If you simply re-run the command above, the head will already start cropped. That’s because 3Dscript takes the current parameters as the initial conditions for the animation. Since the previous animation changed the bounding box without changing it back, the value remains set at the current value (cropping the head). In fact, all the options set manually in the Raycaster window will be applied to the current animation. This can cause problems if you need to generate the animation again after closing 3Dscript and can’t remember the exact parameters.
+
+To prevent this issue, we can set the initial conditions of the animation. This is highly recommended in general, but it’s also necessary when you want to start the animation with the sample in an orientation that is different than the default sample orientation. You can set the initial conditions using the `At frame 0:` construction.
+
+- Write the code below in the editor and press `Run`.
+
+```default
 At frame 0:
 - rotate by 90 degrees around (0, 1, 0) 
 - change channel 1 bounding box z to (0, 129)
@@ -520,10 +620,25 @@ From frame 0 to frame 71:
 - zoom by a factor of 2
 ```
 
+::: {layout-ncol=4}
 
-- We can also change scale bar and bounding box options to tweak the animation
+![](media/84-animation-initial1.png)
 
-```
+![](media/85-animation-initial2.png)
+
+![](media/86-animation-initial3.png)
+
+![](media/87-animation-initial4.png)
+
+:::
+
+#### Tweak appearance
+
+We can now also tweak the animation to reach the final appearance that we want. For example, we can change scale bar width and height and hide the bounding box lines around the sample.
+
+- Write the code below in the editor and press `Run`.
+
+```default
 At frame 0:
 - rotate by 90 degrees around (0, 1, 0) 
 - change channel 1 bounding box z to (0, 129)
@@ -542,37 +657,71 @@ From frame 72 to frame 100:
 - zoom by a factor of 0.5 
 ```
 
-- Save the animation text to file to have it as a record and for later re-use or improvement
+::: {layout-ncol=4}
+
+![](media/88-animation-zoom1.png)
+
+![](media/89-animation-zoom2.png)
+
+![](media/90-animation-zoom3.png)
+
+![](media/91-animation-zoom4.png)
+
+:::
+
+Note how there’s no longer a bounding box and the scale bar is much more visible.
+
+To end this part of the tutorial using a single-channel, single-timepoint dataset. Save the animation script to file for later re-use or incremental improvements.
+
+### Animation 4D
+
+Let’s now try a more challenging sample with two channels and several timepoints. This dataset is shows a fly embryo during early development. The file is named `btd-gap-stg_3_z3_t53s_E3_4x.tif`. It has 2 channels, 30 slices, and 200 timepoints taken every 53s. The original file size is 37GB, but here we will use the 4x downsampled dataset of 2.3GB.
+
+#### Open virtual stack
+
+Even though the original dataset would not even fit in the memory of today’s high-end laptops, we would still be able to generate animations using 3Dscript. That’s because, 3Dscript works with the so called `Virtual Stacks` in Fiji. This is a way to open large stacks without loading all the image data into memory (only what’s current on view is loaded). Virtual stacks are really, really great. Let’s open and inspect the new dataset as a virtual stack.
+
+- Close all the previous 3Dscript windows (including the editor)
+- Go to `File` > `Import` > `TIFF Virtual Stack...` or drag and drop the file on top of the `>>` arrows at the right corner of the Fiji window (secret trick) to open the dataset as a virtual stack
 
 ::: {layout-ncol=2}
 
-![](media/56-register-before.png)
+![](media/92-virtual-menu.png)
 
-![](media/57-register-after.png)
+![](media/93-virtual-drag.png)
 
-::: 
+:::
 
-#### Channels timepoints
+- Zoom in to 200% and inspect the dataset using with `Orthogonal Views`
 
-- This concludes our single channel, single timepoint head example
-- Let’s try now a sample with two channels and timepoints
-- Close all the 3Dscript windows (including the editor)
-- The dataset named `btd-gap-stg_3_z3_t53s_E3_4x.tif` has 2 channels, 30 slices, 200 timepoints, is 2.3GB
-- This would be ok to open in most computers, but note that this is a 4x downsampled dataset. The original is 37GB which would be impossible to fit in the memory of most laptops
-- The good news is that 3Dscript works very well without needing to load the entire stack in memory. We can simply load it as a virtual stack in Fiji. That’s really, really great.
-- To open the dataset as virtual stack go to File > Import > TIFF Virtual Stack...
-- Or, a secret Fiji trick, drag and drop the >> arrows at the edge of the Fiji window to open as virtual stack
-- Inspect with orthogonal views
-- Return to 100% before opening the 3Dscript
-- Now open 3Dscript again and use the + to increase the size of the 3D animation window
-- Note that the rendered image is similar to the original stack, at the same timepoint
-- Rotate the sample interactively to see the other side, the surface of the embryo
-- To reorient the sample like this, reset the transformation and change Rotation Y to 180 
+![](media/94-virtual-ortho.png)
 
-- This time, before we start optimizing the rendering, we will generate a basic animation across timepoints to have an overview of how the sample changes over time
-- On the Editor set the initial conditions to timepoint 1 and 180 degrees rotation, and generate a 10-frame animation from timepoint 1 to 200 (the last). Then press Run
+- Close the orthogonal views
 
-```
+#### Start 3Dscript
+
+3Dscript will use the current image dimensions to generate the animation. For this reason, it is extremely important to return the stack’s zoom to 100% before opening 3Dscript! Otherwise the upsampled data may create image artifacts.
+
+- Open 3Dscript and zoom the `3D animation` window to 200% (this one is fine)
+
+![](media/95-3dscript-stack.png)
+
+The initial 3D rendering is always showing the position and timepoint of the original stack (if you change the timepoint of the original stack and re-open 3Dscript the current timepoint would be rendered).
+
+- Rotate the sample interactively to see the other side, where the surface of the embryo is.
+- Then, reset the transformation and change the `Rotation Y` to `180` 
+
+![](media/96-3dscript-rotate.png)
+
+#### Animate timepoints
+
+This time, before we start optimizing the rendering, we will generate a simple animation across timepoints to have an overview of how the sample changes over time. This is generally good practice as the signal of live samples tend to vary over time.
+
+- Click on `Animation` > `Start text-based animation editor`
+- Write the initial conditions of frame 0 as shown below (set to timepoint 1 and rotate sample 180 degrees horizontally), and generate a 10-frame animation from timepoint 1 to 200 (the last).
+- Then, press `Run`
+
+```default
 At frame 0:
 - change timepoint to 1
 - rotate by 180 degrees horizontally
@@ -580,18 +729,28 @@ At frame 0:
 From frame 0 to frame 9 change timepoint to 200
 ```
 
-- 3Dscript will generate the 10-frame animation and set the 3D Animation window to the last timepoint
-- Unfortunately, there’s no way to set the timepoint for the 3D Animation window simply for interacting (it always show the last timepoint set for the animation script)
-- From the animation we can observe three things that we want to improve.
-- 1. the signal from channel 1 is overexposed at the last timepoint. The intensity of this channel changes over time. The signal becomes so strong at the last timepoints that they become overexpose. We will fix that
-- 2. The signal from channel 2 is not so bright. We want to increase the contrast.
-- 3. The sample is tilted upwards (right side is pointing up). We want to make the sample completely horizontal, parallel to the bounding box
+![](media/97-3dscript-animate.png)
 
-- Adjust the intensity and alpha max values of channel 1 from 600 to 1500 
-- Note how the details along the bright stripe over the embryo are more visible
-- Add this information to the script’s initial state and press Run to generate the updated animation
+3Dscript will generate the 10-frame animation and set the `3D Animation` window to the last timepoint. Unfortunately, there’s no way to set the timepoint for the `3D Animation` window manually (it always show the last timepoint of the most recent animation).
 
-```
+From this first animation, we can observe three things that we want to improve.
+
+1. The signal from channel 1 is overexposed in the last timepoint. The intensity of this channel changes over time. The signal becomes so strong in the last timepoints that it becomes overexposed. We will fix this.
+2. The signal from channel 2 is not so bright. We want to increase the contrast.
+3. The sample is tilted upwards (the right side is pointing up). We want to make the sample completely horizontal, parallel to the bounding box.
+
+#### Adjust channel 1
+
+- Change channel 1’s intensity and alpha maximum values from 600 to 1500.
+
+![](media/98-3dscript-channel1.png)
+
+Note how the details along the bright stripe over the embryo are now more visible. As we have manually changed a `Contrast` value, we should add this information to the initial conditions of the animation.
+
+- Add the new values of min/max intensity/alpha for channel 1 in the script
+- Then press `Run`
+
+```default
 At frame 0:
 - change timepoint to 1
 - rotate by 180 degrees horizontally
@@ -603,15 +762,26 @@ At frame 0:
 From frame 0 to frame 9 change timepoint to 200
 ```
 
-- Now we will improve the other channel. Change the Contrast to Channel 2
-- Change the intensity and alpha max of channel 2 to 3000
-- Note how the gray signal is brighter and the sample surface looks more solid and less porous. That’s because we changed the alpha max value to make all the pixels above 3000 to have 100% opacity
-- But also note that Channel 1 became a little overexposed as well
-- The intensity level is ok as it is going nicely from purple to yellow, so I don’t want to change it. But what I can do is make these pixels more transparent so that they are not so bright
-- Setting the alpha max to 3000 improves the situation
-- Let’s add these updates to the script and Run
+#### Adjust channel 2
 
-```
+Now we will improve the contrast of the other channel.
+
+- Switch to channel 2 in the Contrast menu.
+
+![](media/99-3dscript-channel2.png)
+
+- Change channel 2’s intensity and alpha maximum values from 7000 to 3000.
+
+![](media/100-3dscript-adjusted.png)
+
+Note how the gray signal is now brighter and the sample surface looks more solid and less porous. That’s because we changed the alpha maximum value to make all the pixels above 3000 to have 100% opacity.
+
+Unfortunately, the increase in brightness of channel 2 led to some regions of channel 1 to become a little overexposed. Before writing the new values to the code, let’s make a small correction to channel 1. We don’t want to change the intensity, but we can make the pixels more transparent, so that they don’t become so bright.
+
+- Set channel 2’s alpha maximum value from 1500 to 3000
+- Then, update the script as below and `Run` it
+
+```default
 At frame 0:
 - change timepoint to 1
 - rotate by 180 degrees horizontally
@@ -627,20 +797,39 @@ At frame 0:
 From frame 0 to frame 9 change timepoint to 200
 ```
 
-- Great, the animation is looking nice now
-- The last detail is to adjust the sample orientation around the Z axis
-- Change the Transformation Rotation Z to -4
-- The sample will become parallel to the window
-- To make this permanent we will add the following line to the script’s initial stage
+![](media/101-3dscript-both.png)
 
-```
+Great, the animation is looking nice now.
+
+#### Adjust orientation
+
+The last detail to adjust is the sample orientation around the Z axis.
+
+- Change the `Rotation Z` to `-4` in the Transformation menu
+
+![](media/102-3dscript-rotate.png)
+
+The sample will become parallel to the Y axis of the window. The bounding box will appear tilted.
+
+We can now make this change permanent.
+
+- Add the following line to the script and `Run`
+
+```default
 - rotate by 4 degrees around (0, 0, 1)
 ```
 
-- Great. The core editing is done. We can now change some general parameters
-- We want to hide the bounding box and make the scale bar more visible
+![](media/103-3dscript-rotated.png)
 
-```
+This notation is a little different, but it just means that it is rotating 4 degrees around the Z axis (X, Y, Z).
+
+#### Tweak appearance
+
+Great. The core editing is done. We can now change some general parameters of the animation like we did for the previous dataset. We want to hide the bounding box and make the scale bar more visible.
+
+- Add the corresponding lines to the script, then `Run`
+
+```default
 At frame 0:
 - change timepoint to 1
 - rotate by 180 degrees horizontally
@@ -661,37 +850,36 @@ At frame 0:
 From frame 0 to frame 9 change timepoint to 200
 ```
 
-- We can now finish off by increasing the number of frames of the animation to make it smoother
-- The maximum number of frames is 200 as we have 200 timepoints. If you add more frames then you’ll get duplicated frames and a lagging animation
-- Try first increasing to 100 frames by changing 9 to 99:
+![](media/104-3dscript-tweaked.png)
 
-```
-From frame 0 to frame 99 change timepoint to 200
-```
+#### Increase frame number
 
-- Note that it takes a bit longer to generate the animation, but it is fast
-- Try now setting the to 199 frames
+We can now finish off the animation by increasing the number of frames to make it smoother. The maximum number of frames is 200, as we have 200 timepoints. If you add more frames, you’ll get duplicated frames and the animation might lag.
 
-```
+- Change the last frame from 9 to 199, then `Run`
+
+```default
 From frame 0 to frame 199 change timepoint to 200
 ```
 
-- Each frame is now a timepoint and the animation is as smooth as it can be given the original data
+![](media/105-3dscript-smooth.png)
 
-- We are done with this animation, let’s save it
-- Always save the animation as tif first. Simply press ctrl+s or go to File > Save or File > Save As > Tiff...
-- I normally add a `3D` prefix to the filename
+Each frame is now a timepoint and the animation is as smooth as it can be, given the original data.
 
-- Then we want to save it as a video
-- File > Save As > AVI...
-- Change the Compression to None (otherwise your image quality will be degraded) and choose the frame rate of the video. For this 15fps works fine
-- This will create an uncompressed `.avi` file which you can play on your’s system video player
-- However, for presentation and other usages, it is good practice to compress the video into a mp4 container using a high-quality compression parameter to reduce file size without affecting image quality. A good software for doing this is Handbrake
+#### Save animation
 
+We are done with this animation, let’s save it. Always save the original animation as a `.tif` stack.
 
-- What if you want to see the channel 1 signal all along the movie
-- How can you dynamically change the max intensity/alpha?
+- Press ctrl+s or `File` > `Save` or `File` > `Save As` > `Tiff...`
 
+I normally add the `3D` prefix to the filename.
+
+Then, also save the animation as a `.avi` video file.
+
+- Go to `File` > `Save As` > `AVI...`
+- Change the `Compression` to `None` (otherwise your image quality will be degraded) and choose the frame rate for the video (15fps works fine in this case).
+
+This will create an uncompressed `.avi` file. You can usually play this file on your video player. However, this video can be large. So for presentation purposes and other usages, it is good practice to compress the video into a `.mp4` container using a high-quality compression parameter to reduce the file size without affecting the image quality. A good software for this is [HandBrake](https://handbrake.fr).
 
 ## References
 
