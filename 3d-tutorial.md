@@ -24,8 +24,9 @@ This tutorial shows different approaches to visualize 3D microscopy data in Fiji
 
 ## Requirements {#sec-requirements}
 
-- Fiji <https://fiji.sc>
-- 3Dscript <https://bene51.github.io/3Dscript/>
+- [Fiji](https://fiji.sc) [@Schindelin2012-di]
+- [3Dscript](https://bene51.github.io/3Dscript/) plugin [@Schmid2019-bm]
+- [Fly Embryo Timelapse](https://doi.org/10.5281/zenodo.18065738) dataset (4x downsampled) [@Vellutini2025-le]
 
 ## Setup {#sec-setup}
 
@@ -50,8 +51,8 @@ This tutorial shows different approaches to visualize 3D microscopy data in Fiji
 
 ### Download 3D datasets
 
-- `T1 Head (16-bits)` dataset is included in Fiji (no need to download in advance)
-- `btd-gap-stg_3_z3_t53s_E3_4x.tif` dataset downloadable from Zenodo
+- `T1 Head (16-bits)` dataset is included in Fiji; no need to download in advance.
+- `btd-gap-stg_3_z3_t53s_E3_4x.tif` dataset from this [Zenodo repository](https://doi.org/10.5281/zenodo.18065738) [@Vellutini2025-le]. The direct link to the file is [here](https://zenodo.org/records/18065739/files/btd-gap-stg_3_z3_t53s_E3_4x.tif?download=1) (2.3GB).
 
 ## Open dataset {#sec-open-dataset}
 
