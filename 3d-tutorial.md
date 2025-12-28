@@ -902,7 +902,7 @@ Vellutini, Bruno C. 2025. 3D Tutorial: Visualization of 3D Data in Fiji Using Bu
 
 ## License
 
-This tutorial is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
+This tutorial is available under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
 
 ## References {#sec-references}
 
