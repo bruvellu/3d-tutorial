@@ -6,7 +6,7 @@ This tutorial shows different approaches to visualize 3D microscopy data in [Fij
 
 The tutorial is available online at [bruvellu.github.io/3d-tutorial](https://bruvellu.github.io/3d-tutorial/).
 
-For offline usage:
+### Offline usage
 
 - Download the latest archive from GitHub ([here](https://github.com/bruvellu/3d-tutorial/archive/refs/heads/main.zip)) or Zenodo ([here](https://doi.org/10.5281/zenodo.18070016))
 - Unzip the archive in your working directory
