@@ -242,9 +242,11 @@ BigVolumeBrowser is a Fiji plugin to render and interact with 3D data. It’s a 
 
 ## 3Dscript {#sec-threedscript}
 
-3Dscript is a GPU-accelerated Fiji plugin to generate animations of 3D/4D data [@Schmid2019-bm]. It supports stacks with multiple channels and timepoints, has several options to control the rendering appearance, allows custom transformations and cropping of the data, and generates animations using natural language. The latter is specially useful to have precise control over the animation. Once properly installed, 3Dscript is incredibly fast to generate the animations and doesn’t require a lot of RAM as the datasets can be opened as virtual stacks (more about this below).
+[3Dscript](https://bene51.github.io/3Dscript/) is a GPU-accelerated Fiji plugin to generate animations of 3D/4D data [@Schmid2019-bm]. It supports stacks with multiple channels and timepoints, has several options to control the rendering appearance, allows custom transformations and cropping of the data, and generates animations using a natural language, which is great to have precise control over the animation. 3Dscript is also incredibly fast to generate the animations and doesn’t require a lot of memory since the datasets can be opened as virtual stacks (more about this below).
 
-To get start, make sure the head dataset is still open.
+This tutorial covers the basics for generating animations for 3D and 4D datasets. For more detailed information and documentation please refer to [3Dscript’s wiki](https://github.com/bene51/3Dscript/wiki).
+
+To get started, make sure the head dataset is still open.
 
 - Go to `Plugins` > `3Dscript` > `Interactive Animation`
 
