@@ -14,7 +14,7 @@ The tutorial is available online at [bruvellu.github.io/3d-tutorial](https://bru
 
 ## Citation
 
-Vellutini, Bruno C. 2025. 3D Tutorial: Visualization of 3D Data in Fiji Using Built-in Tools and the Plugin 3Dscript. Zenodo. <https://doi.org/10.5281/zenodo.18070016>.
+Vellutini, B. C. (2025). Visualization of 3D data in Fiji using built-in tools and 3Dscript. Zenodo. <https://doi.org/10.5281/zenodo.18070016>
 
 ## License
 
