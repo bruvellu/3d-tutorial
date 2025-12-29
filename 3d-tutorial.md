@@ -898,7 +898,7 @@ However, this video can be large. So for presentation purposes and other usages,
 
 Vellutini, B. C. (2025). Visualization of 3D data in Fiji using built-in tools and 3Dscript. Zenodo. <https://doi.org/10.5281/zenodo.18070016>
 
-## License
+## License {#sec-license}
 
 This tutorial is available under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
 
