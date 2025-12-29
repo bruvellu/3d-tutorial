@@ -1,7 +1,7 @@
 ---
 title: Visualization of 3D data in Fiji using built-in tools and 3Dscript
 author: Bruno C. Vellutini
-date: 29 December 2025
+date: 05 January 2026
 date-format: long
 created: 23 December 2025
 modified: today
@@ -896,7 +896,7 @@ However, this video can be large. So for presentation purposes and other usages,
 
 ## Citation {#sec-citation}
 
-Vellutini, B. C. (2025). Visualization of 3D data in Fiji using built-in tools and 3Dscript. Zenodo. <https://doi.org/10.5281/zenodo.18070016>
+Vellutini, B. C. (2026). Visualization of 3D data in Fiji using built-in tools and 3Dscript. Zenodo. <https://doi.org/10.5281/zenodo.18070016>
 
 ## License {#sec-license}
 
