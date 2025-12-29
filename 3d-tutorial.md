@@ -1,5 +1,5 @@
 ---
-title: Visualization of 3D data in Fiji
+title: Visualization of 3D data in Fiji using built-in tools and 3Dscript
 author: Bruno C. Vellutini
 date: 29 December 2025
 date-format: long

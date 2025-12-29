@@ -12,10 +12,20 @@
 
     "publication_date": "2025-12-29",
 
-    "title": "3D Tutorial: Visualization of 3D data in Fiji using built-in tools and the plugin 3Dscript",
+    "title": "Visualization of 3D data in Fiji using built-in tools and 3Dscript",
 
     "description": "This tutorial shows different approaches to visualize 3D microscopy data in Fiji. It provides a brief introduction to some tools bundled in Fiji such as Orthogonal Views, Volume Viewer, 3D Viewer, and BigDataViewer, and a more in-depth explanation of the plugin 3Dscript.",
 
-    "keywords": ["Fiji", "ImageJ", "3D", "Data Visualization", "Tutorial"]
+    "upload_type": "Lesson",
+
+    "keywords": [
+        "Fiji",
+        "ImageJ",
+        "3D",
+        "Data Visualization",
+        "3Dscript",
+        "BigDataViewer",
+        "Tutorial"
+    ]
 
 }
