@@ -24,3 +24,4 @@ publish:
 # Push to repository
 push:
     git push
+    git push --tags
